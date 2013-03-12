@@ -60,6 +60,8 @@
 		A5AF6CB716C2148F00404075 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AF6CB516C2148F00404075 /* InfoViewController.xib */; };
 		A5B44C9516C3608A0092CAD9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B44C9416C3608A0092CAD9 /* Security.framework */; };
 		A5B44C9816C360940092CAD9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B44C9716C360940092CAD9 /* QuartzCore.framework */; };
+		A780942A16EF7087000B8EDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A780942916EF7087000B8EDA /* CFNetwork.framework */; };
+		A780942C16EF7096000B8EDA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A780942B16EF7096000B8EDA /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +134,8 @@
 		A5AF6CB516C2148F00404075 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		A5B44C9416C3608A0092CAD9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A5B44C9716C360940092CAD9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A780942916EF7087000B8EDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A780942B16EF7096000B8EDA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A780942C16EF7096000B8EDA /* SystemConfiguration.framework in Frameworks */,
+				A780942A16EF7087000B8EDA /* CFNetwork.framework in Frameworks */,
 				A585207216EED4CE00DA51BB /* Dropbox.framework in Frameworks */,
 				A5B44C9816C360940092CAD9 /* QuartzCore.framework in Frameworks */,
 				A5B44C9516C3608A0092CAD9 /* Security.framework in Frameworks */,
@@ -222,6 +228,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A780942B16EF7096000B8EDA /* SystemConfiguration.framework */,
+				A780942916EF7087000B8EDA /* CFNetwork.framework */,
 				A585207116EED4CE00DA51BB /* Dropbox.framework */,
 				A5B44C9716C360940092CAD9 /* QuartzCore.framework */,
 				A5B44C9416C3608A0092CAD9 /* Security.framework */,
