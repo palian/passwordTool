@@ -39,8 +39,24 @@
     rootViewController.managedObjectContext = self.managedObjectContext;
 }
 
+- (void)_setupDropboxAPI
+{
+    DBAccountManager *accountManager = [[DBAccountManager alloc] initWithAppKey:@"8ad9lq3ns5zeefz" secret:@"di5td5cucuracp1"];
+	[DBAccountManager setSharedManager:accountManager];
+    DBAccount *account = accountManager.linkedAccount;
+    
+    // if we have a linked account set the file system for it
+    if (account)
+    {
+        DBFilesystem *filesystem = [[DBFilesystem alloc] initWithAccount:account];
+        [DBFilesystem setSharedFilesystem:filesystem];
+    }
+}
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 
+    [self _setupDropboxAPI];
+    
     [self.window setRootViewController:navigationController];
 
     
