@@ -46,7 +46,7 @@
 
 - (void)didPressLink
 {
-    
+    [[DBAccountManager sharedManager] linkFromController:self];
 }
 
 - (void)viewDidLoad
