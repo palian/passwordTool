@@ -1,0 +1,619 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* LockAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* LockAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		28860BE50F44EE6400985440 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28860BE40F44EE6400985440 /* CoreData.framework */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
+		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		28D3F202112F7DC200FD0661 /* Lock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28D3F201112F7DC200FD0661 /* Lock.xcdatamodeld */; };
+		7A07050813E58FEA00443DE2 /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A07050613E58FEA00443DE2 /* DetailView.m */; };
+		7A07050913E58FEA00443DE2 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A07050713E58FEA00443DE2 /* DetailView.xib */; };
+		7A3E492714623D1500045D47 /* GoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E492314623D1500045D47 /* GoButton.png */; };
+		7A3E492814623D1500045D47 /* GoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E492414623D1500045D47 /* GoButton@2x.png */; };
+		7A3E492914623D1500045D47 /* PALIANTech Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E492514623D1500045D47 /* PALIANTech Button.png */; };
+		7A3E492A14623D1500045D47 /* PALIANTech Button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E492614623D1500045D47 /* PALIANTech Button@2x.png */; };
+		7A424B07161D3D95005F2E9B /* DetailView5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A424B04161D3D95005F2E9B /* DetailView5.xib */; };
+		7A424B08161D3D95005F2E9B /* iPhonePINSetup5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A424B05161D3D95005F2E9B /* iPhonePINSetup5.xib */; };
+		7A424B09161D3D95005F2E9B /* iPhonePINView5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A424B06161D3D95005F2E9B /* iPhonePINView5.xib */; };
+		7A424B0C161D3DA8005F2E9B /* DoubleComponentPickerView5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A424B0A161D3DA8005F2E9B /* DoubleComponentPickerView5.xib */; };
+		7A424B0D161D3DA8005F2E9B /* editComponentPickerView5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A424B0B161D3DA8005F2E9B /* editComponentPickerView5.xib */; };
+		7A646A74142ED6D400020B8C /* editComponentPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A646A73142ED6D400020B8C /* editComponentPickerViewController.m */; };
+		7A646A76142ED6EE00020B8C /* editComponentPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A646A75142ED6EE00020B8C /* editComponentPickerView.xib */; };
+		7A646A86142ED7D500020B8C /* Lock.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A646A85142ED7D500020B8C /* Lock.m */; };
+		7A66624E1505C38600DD77A5 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A66624D1505C38600DD77A5 /* infoButton.png */; };
+		7AAAFDA3161E82520043322C /* RootViewController5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AAAFDA2161E82520043322C /* RootViewController5.xib */; };
+		7AAAFDA6161E82780043322C /* MainWindow5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AAAFDA5161E82780043322C /* MainWindow5.xib */; };
+		7AF1920D13E4534A0022B384 /* NSFileManager-AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1920813E4534A0022B384 /* NSFileManager-AES.m */; };
+		7AF1920E13E4534A0022B384 /* NSData-AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1920A13E4534A0022B384 /* NSData-AES.m */; };
+		7AF1920F13E4534A0022B384 /* rijndael.c in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1920B13E4534A0022B384 /* rijndael.c */; };
+		7AF1928613E458020022B384 /* Encrypted.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1928513E458020022B384 /* Encrypted.sqlite */; };
+		7AF6083713E4464300BCEF37 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF6083613E4464300BCEF37 /* iAd.framework */; };
+		7AF6084313E4466E00BCEF37 /* DoubleComponentPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6083A13E4466E00BCEF37 /* DoubleComponentPickerViewController.m */; };
+		7AF6084413E4466E00BCEF37 /* iPhonePINSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6083C13E4466E00BCEF37 /* iPhonePINSetup.m */; };
+		7AF6084513E4466E00BCEF37 /* iPhonePINSetup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF6083D13E4466E00BCEF37 /* iPhonePINSetup.xib */; };
+		7AF6084613E4466E00BCEF37 /* iPhonePINView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6083F13E4466E00BCEF37 /* iPhonePINView.m */; };
+		7AF6084713E4466E00BCEF37 /* iPhonePINView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF6084013E4466E00BCEF37 /* iPhonePINView.xib */; };
+		7AF6084813E4466E00BCEF37 /* PIN.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6084213E4466E00BCEF37 /* PIN.m */; };
+		7AF6085613E446B900BCEF37 /* DoubleComponentPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF6085513E446B900BCEF37 /* DoubleComponentPickerView.xib */; };
+		7AF608BB13E4482B00BCEF37 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608A713E4482B00BCEF37 /* Icon-72.png */; };
+		7AF608BC13E4482B00BCEF37 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608A813E4482B00BCEF37 /* Icon-Small-50.png */; };
+		7AF608BD13E4482B00BCEF37 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608A913E4482B00BCEF37 /* Icon-Small.png */; };
+		7AF608BE13E4482B00BCEF37 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608AA13E4482B00BCEF37 /* Icon-Small@2x.png */; };
+		7AF608BF13E4482B00BCEF37 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608AB13E4482B00BCEF37 /* Icon.png */; };
+		7AF608C013E4482B00BCEF37 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608AC13E4482B00BCEF37 /* Icon@2x.png */; };
+		7AF608C913E4482B00BCEF37 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608B913E4482B00BCEF37 /* Default.png */; };
+		7AF608CA13E4482B00BCEF37 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608BA13E4482B00BCEF37 /* Default@2x.png */; };
+		A55151CB1669C80200A0E79C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A55151CA1669C80200A0E79C /* Default-568h@2x.png */; };
+		A585207216EED4CE00DA51BB /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A585207116EED4CE00DA51BB /* Dropbox.framework */; };
+		A5AF6CB616C2148F00404075 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AF6CB416C2148F00404075 /* InfoViewController.m */; };
+		A5AF6CB716C2148F00404075 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AF6CB516C2148F00404075 /* InfoViewController.xib */; };
+		A5B44C9516C3608A0092CAD9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B44C9416C3608A0092CAD9 /* Security.framework */; };
+		A5B44C9816C360940092CAD9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B44C9716C360940092CAD9 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* LockAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* LockAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Passwords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passwords.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28860B760F44E54D00985440 /* Lock.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Lock.xcdatamodel; sourceTree = "<group>"; };
+		28860BE40F44EE6400985440 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E55F0DE3E45000AC0155 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		28A0AAE50D9B0CCF005BE974 /* Lock_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lock_Prefix.pch; sourceTree = "<group>"; };
+		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A07050513E58FEA00443DE2 /* DetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailView.h; sourceTree = "<group>"; };
+		7A07050613E58FEA00443DE2 /* DetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailView.m; sourceTree = "<group>"; };
+		7A07050713E58FEA00443DE2 /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DetailView.xib; path = Classes/DetailView.xib; sourceTree = "<group>"; };
+		7A3E492314623D1500045D47 /* GoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoButton.png; sourceTree = "<group>"; };
+		7A3E492414623D1500045D47 /* GoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoButton@2x.png"; sourceTree = "<group>"; };
+		7A3E492514623D1500045D47 /* PALIANTech Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PALIANTech Button.png"; sourceTree = "<group>"; };
+		7A3E492614623D1500045D47 /* PALIANTech Button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PALIANTech Button@2x.png"; sourceTree = "<group>"; };
+		7A424B04161D3D95005F2E9B /* DetailView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailView5.xib; path = Classes/DetailView5.xib; sourceTree = "<group>"; };
+		7A424B05161D3D95005F2E9B /* iPhonePINSetup5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhonePINSetup5.xib; path = Classes/iPhonePINSetup5.xib; sourceTree = "<group>"; };
+		7A424B06161D3D95005F2E9B /* iPhonePINView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhonePINView5.xib; path = Classes/iPhonePINView5.xib; sourceTree = "<group>"; };
+		7A424B0A161D3DA8005F2E9B /* DoubleComponentPickerView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoubleComponentPickerView5.xib; sourceTree = "<group>"; };
+		7A424B0B161D3DA8005F2E9B /* editComponentPickerView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = editComponentPickerView5.xib; sourceTree = "<group>"; };
+		7A646A72142ED6D400020B8C /* editComponentPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editComponentPickerViewController.h; sourceTree = "<group>"; };
+		7A646A73142ED6D400020B8C /* editComponentPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editComponentPickerViewController.m; sourceTree = "<group>"; };
+		7A646A75142ED6EE00020B8C /* editComponentPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = editComponentPickerView.xib; sourceTree = "<group>"; };
+		7A646A84142ED7D500020B8C /* Lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lock.h; sourceTree = "<group>"; };
+		7A646A85142ED7D500020B8C /* Lock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lock.m; sourceTree = "<group>"; };
+		7A66624D1505C38600DD77A5 /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoButton.png; sourceTree = "<group>"; };
+		7AAAFDA2161E82520043322C /* RootViewController5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController5.xib; sourceTree = "<group>"; };
+		7AAAFDA5161E82780043322C /* MainWindow5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow5.xib; sourceTree = "<group>"; };
+		7AF1920713E4534A0022B384 /* NSFileManager-AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager-AES.h"; sourceTree = "<group>"; };
+		7AF1920813E4534A0022B384 /* NSFileManager-AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager-AES.m"; sourceTree = "<group>"; };
+		7AF1920913E4534A0022B384 /* NSData-AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData-AES.h"; sourceTree = "<group>"; };
+		7AF1920A13E4534A0022B384 /* NSData-AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData-AES.m"; sourceTree = "<group>"; };
+		7AF1920B13E4534A0022B384 /* rijndael.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rijndael.c; sourceTree = "<group>"; };
+		7AF1920C13E4534A0022B384 /* rijndael.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rijndael.h; sourceTree = "<group>"; };
+		7AF1928513E458020022B384 /* Encrypted.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Encrypted.sqlite; path = "../Current Build/Encrypted.sqlite"; sourceTree = SOURCE_ROOT; };
+		7AF6083613E4464300BCEF37 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		7AF6083A13E4466E00BCEF37 /* DoubleComponentPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleComponentPickerViewController.m; sourceTree = "<group>"; };
+		7AF6083B13E4466E00BCEF37 /* iPhonePINSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhonePINSetup.h; sourceTree = "<group>"; };
+		7AF6083C13E4466E00BCEF37 /* iPhonePINSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhonePINSetup.m; sourceTree = "<group>"; };
+		7AF6083D13E4466E00BCEF37 /* iPhonePINSetup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = iPhonePINSetup.xib; path = Classes/iPhonePINSetup.xib; sourceTree = "<group>"; };
+		7AF6083E13E4466E00BCEF37 /* iPhonePINView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhonePINView.h; sourceTree = "<group>"; };
+		7AF6083F13E4466E00BCEF37 /* iPhonePINView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhonePINView.m; sourceTree = "<group>"; };
+		7AF6084013E4466E00BCEF37 /* iPhonePINView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = iPhonePINView.xib; path = Classes/iPhonePINView.xib; sourceTree = "<group>"; };
+		7AF6084113E4466E00BCEF37 /* PIN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIN.h; sourceTree = "<group>"; };
+		7AF6084213E4466E00BCEF37 /* PIN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIN.m; sourceTree = "<group>"; };
+		7AF6084E13E4468000BCEF37 /* DoubleComponentPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleComponentPickerViewController.h; sourceTree = "<group>"; };
+		7AF6085513E446B900BCEF37 /* DoubleComponentPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleComponentPickerView.xib; sourceTree = "<group>"; };
+		7AF608A713E4482B00BCEF37 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		7AF608A813E4482B00BCEF37 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		7AF608A913E4482B00BCEF37 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		7AF608AA13E4482B00BCEF37 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		7AF608AB13E4482B00BCEF37 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7AF608AC13E4482B00BCEF37 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		7AF608B913E4482B00BCEF37 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7AF608BA13E4482B00BCEF37 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Lock-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Lock-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A55151CA1669C80200A0E79C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A585207116EED4CE00DA51BB /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = "../dropbox-ios-sync-sdk-1.0.4/Dropbox.framework"; sourceTree = "<group>"; };
+		A5AF6CB316C2148F00404075 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		A5AF6CB416C2148F00404075 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		A5AF6CB516C2148F00404075 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		A5B44C9416C3608A0092CAD9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A5B44C9716C360940092CAD9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A585207216EED4CE00DA51BB /* Dropbox.framework in Frameworks */,
+				A5B44C9816C360940092CAD9 /* QuartzCore.framework in Frameworks */,
+				A5B44C9516C3608A0092CAD9 /* Security.framework in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				28860BE50F44EE6400985440 /* CoreData.framework in Frameworks */,
+				7AF6083713E4464300BCEF37 /* iAd.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7A646A84142ED7D500020B8C /* Lock.h */,
+				7A646A85142ED7D500020B8C /* Lock.m */,
+				7AF1921113E4534D0022B384 /* Encryption Classes */,
+				7AF6084F13E4469600BCEF37 /* PIN Classes */,
+				A5AF6CB116C2146E00404075 /* InfoView Controllers */,
+				7AF6084E13E4468000BCEF37 /* DoubleComponentPickerViewController.h */,
+				7AF6083A13E4466E00BCEF37 /* DoubleComponentPickerViewController.m */,
+				7A646A72142ED6D400020B8C /* editComponentPickerViewController.h */,
+				7A646A73142ED6D400020B8C /* editComponentPickerViewController.m */,
+				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
+				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				7A07050513E58FEA00443DE2 /* DetailView.h */,
+				7A07050613E58FEA00443DE2 /* DetailView.m */,
+				1D3623240D0F684500981E51 /* LockAppDelegate.h */,
+				1D3623250D0F684500981E51 /* LockAppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* Passwords.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AAE50D9B0CCF005BE974 /* Lock_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7AF1928513E458020022B384 /* Encrypted.sqlite */,
+				7A3E492214623D1500045D47 /* Graphics */,
+				7AF608A613E4482B00BCEF37 /* New_Icons */,
+				7AF608B613E4482B00BCEF37 /* Splashscreens */,
+				28D3F201112F7DC200FD0661 /* Lock.xcdatamodeld */,
+				7AAAFD9E161E819A0043322C /* iPhone5 Views */,
+				7AAAFDA4161E825D0043322C /* iPhone Classic */,
+				8D1107310486CEB800E47090 /* Lock-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A585207116EED4CE00DA51BB /* Dropbox.framework */,
+				A5B44C9716C360940092CAD9 /* QuartzCore.framework */,
+				A5B44C9416C3608A0092CAD9 /* Security.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				28860BE40F44EE6400985440 /* CoreData.framework */,
+				7AF6083613E4464300BCEF37 /* iAd.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A3E492214623D1500045D47 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				7A66624D1505C38600DD77A5 /* infoButton.png */,
+				7A3E492314623D1500045D47 /* GoButton.png */,
+				7A3E492414623D1500045D47 /* GoButton@2x.png */,
+				7A3E492514623D1500045D47 /* PALIANTech Button.png */,
+				7A3E492614623D1500045D47 /* PALIANTech Button@2x.png */,
+			);
+			name = Graphics;
+			path = "../Current Build/Graphics";
+			sourceTree = SOURCE_ROOT;
+		};
+		7AAAFD9E161E819A0043322C /* iPhone5 Views */ = {
+			isa = PBXGroup;
+			children = (
+				7AAAFDA5161E82780043322C /* MainWindow5.xib */,
+				7AAAFDA2161E82520043322C /* RootViewController5.xib */,
+				7A424B0A161D3DA8005F2E9B /* DoubleComponentPickerView5.xib */,
+				7A424B0B161D3DA8005F2E9B /* editComponentPickerView5.xib */,
+				7A424B04161D3D95005F2E9B /* DetailView5.xib */,
+				7A424B05161D3D95005F2E9B /* iPhonePINSetup5.xib */,
+				7A424B06161D3D95005F2E9B /* iPhonePINView5.xib */,
+			);
+			name = "iPhone5 Views";
+			sourceTree = "<group>";
+		};
+		7AAAFDA4161E825D0043322C /* iPhone Classic */ = {
+			isa = PBXGroup;
+			children = (
+				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
+				7AF6083D13E4466E00BCEF37 /* iPhonePINSetup.xib */,
+				7AF6084013E4466E00BCEF37 /* iPhonePINView.xib */,
+				7AF6085513E446B900BCEF37 /* DoubleComponentPickerView.xib */,
+				7A646A75142ED6EE00020B8C /* editComponentPickerView.xib */,
+				7A07050713E58FEA00443DE2 /* DetailView.xib */,
+			);
+			name = "iPhone Classic";
+			sourceTree = "<group>";
+		};
+		7AF1921113E4534D0022B384 /* Encryption Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7AF1920713E4534A0022B384 /* NSFileManager-AES.h */,
+				7AF1920813E4534A0022B384 /* NSFileManager-AES.m */,
+				7AF1920913E4534A0022B384 /* NSData-AES.h */,
+				7AF1920A13E4534A0022B384 /* NSData-AES.m */,
+				7AF1920B13E4534A0022B384 /* rijndael.c */,
+				7AF1920C13E4534A0022B384 /* rijndael.h */,
+			);
+			name = "Encryption Classes";
+			sourceTree = "<group>";
+		};
+		7AF6084F13E4469600BCEF37 /* PIN Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7AF6083B13E4466E00BCEF37 /* iPhonePINSetup.h */,
+				7AF6083C13E4466E00BCEF37 /* iPhonePINSetup.m */,
+				7AF6083E13E4466E00BCEF37 /* iPhonePINView.h */,
+				7AF6083F13E4466E00BCEF37 /* iPhonePINView.m */,
+				7AF6084113E4466E00BCEF37 /* PIN.h */,
+				7AF6084213E4466E00BCEF37 /* PIN.m */,
+			);
+			name = "PIN Classes";
+			sourceTree = "<group>";
+		};
+		7AF608A613E4482B00BCEF37 /* New_Icons */ = {
+			isa = PBXGroup;
+			children = (
+				7AF608A713E4482B00BCEF37 /* Icon-72.png */,
+				7AF608A813E4482B00BCEF37 /* Icon-Small-50.png */,
+				7AF608A913E4482B00BCEF37 /* Icon-Small.png */,
+				7AF608AA13E4482B00BCEF37 /* Icon-Small@2x.png */,
+				7AF608AB13E4482B00BCEF37 /* Icon.png */,
+				7AF608AC13E4482B00BCEF37 /* Icon@2x.png */,
+			);
+			name = New_Icons;
+			path = "../Current Build/New_Icons";
+			sourceTree = SOURCE_ROOT;
+		};
+		7AF608B613E4482B00BCEF37 /* Splashscreens */ = {
+			isa = PBXGroup;
+			children = (
+				A55151CA1669C80200A0E79C /* Default-568h@2x.png */,
+				7AF608B913E4482B00BCEF37 /* Default.png */,
+				7AF608BA13E4482B00BCEF37 /* Default@2x.png */,
+			);
+			name = Splashscreens;
+			path = "../Current Build/Splashscreens";
+			sourceTree = SOURCE_ROOT;
+		};
+		A5AF6CB116C2146E00404075 /* InfoView Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A5AF6CB316C2148F00404075 /* InfoViewController.h */,
+				A5AF6CB416C2148F00404075 /* InfoViewController.m */,
+				A5AF6CB516C2148F00404075 /* InfoViewController.xib */,
+			);
+			name = "InfoView Controllers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Lock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Lock" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lock;
+			productName = Lock;
+			productReference = 1D6058910D05DD3D006BFB54 /* Passwords.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Lock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Lock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
+				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
+				7AF6084513E4466E00BCEF37 /* iPhonePINSetup.xib in Resources */,
+				7AF6084713E4466E00BCEF37 /* iPhonePINView.xib in Resources */,
+				7AF6085613E446B900BCEF37 /* DoubleComponentPickerView.xib in Resources */,
+				7AF608BB13E4482B00BCEF37 /* Icon-72.png in Resources */,
+				7AF608BC13E4482B00BCEF37 /* Icon-Small-50.png in Resources */,
+				7AF608BD13E4482B00BCEF37 /* Icon-Small.png in Resources */,
+				7AF608BE13E4482B00BCEF37 /* Icon-Small@2x.png in Resources */,
+				7AF608BF13E4482B00BCEF37 /* Icon.png in Resources */,
+				7AF608C013E4482B00BCEF37 /* Icon@2x.png in Resources */,
+				7AF608C913E4482B00BCEF37 /* Default.png in Resources */,
+				7AF608CA13E4482B00BCEF37 /* Default@2x.png in Resources */,
+				7AF1928613E458020022B384 /* Encrypted.sqlite in Resources */,
+				7A07050913E58FEA00443DE2 /* DetailView.xib in Resources */,
+				7A646A76142ED6EE00020B8C /* editComponentPickerView.xib in Resources */,
+				7A3E492714623D1500045D47 /* GoButton.png in Resources */,
+				7A3E492814623D1500045D47 /* GoButton@2x.png in Resources */,
+				7A3E492914623D1500045D47 /* PALIANTech Button.png in Resources */,
+				7A3E492A14623D1500045D47 /* PALIANTech Button@2x.png in Resources */,
+				7A66624E1505C38600DD77A5 /* infoButton.png in Resources */,
+				7A424B07161D3D95005F2E9B /* DetailView5.xib in Resources */,
+				7A424B08161D3D95005F2E9B /* iPhonePINSetup5.xib in Resources */,
+				7A424B09161D3D95005F2E9B /* iPhonePINView5.xib in Resources */,
+				7A424B0C161D3DA8005F2E9B /* DoubleComponentPickerView5.xib in Resources */,
+				7A424B0D161D3DA8005F2E9B /* editComponentPickerView5.xib in Resources */,
+				7AAAFDA3161E82520043322C /* RootViewController5.xib in Resources */,
+				7AAAFDA6161E82780043322C /* MainWindow5.xib in Resources */,
+				A55151CB1669C80200A0E79C /* Default-568h@2x.png in Resources */,
+				A5AF6CB716C2148F00404075 /* InfoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* LockAppDelegate.m in Sources */,
+				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				28D3F202112F7DC200FD0661 /* Lock.xcdatamodeld in Sources */,
+				7AF6084313E4466E00BCEF37 /* DoubleComponentPickerViewController.m in Sources */,
+				7AF6084413E4466E00BCEF37 /* iPhonePINSetup.m in Sources */,
+				7AF6084613E4466E00BCEF37 /* iPhonePINView.m in Sources */,
+				7AF6084813E4466E00BCEF37 /* PIN.m in Sources */,
+				7AF1920D13E4534A0022B384 /* NSFileManager-AES.m in Sources */,
+				7AF1920E13E4534A0022B384 /* NSData-AES.m in Sources */,
+				7AF1920F13E4534A0022B384 /* rijndael.c in Sources */,
+				7A07050813E58FEA00443DE2 /* DetailView.m in Sources */,
+				7A646A74142ED6D400020B8C /* editComponentPickerViewController.m in Sources */,
+				7A646A86142ED7D500020B8C /* Lock.m in Sources */,
+				A5AF6CB616C2148F00404075 /* InfoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher S. Palian (RY7W6A2499)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../dropbox-ios-sync-sdk-1.0.4\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Lock_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "Lock-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = Passwords;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFDC6E9E-78ED-4227-8E64-0C26D7E217B5";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../dropbox-ios-sync-sdk-1.0.4\"",
+				);
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Lock_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "Lock-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = Passwords;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A8EC2B313E654B400A963E7 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher S. Palian";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A520A164-B622-49B5-98FC-A91FD76A1051";
+				SDKROOT = iphoneos;
+			};
+			name = Distribution;
+		};
+		7A8EC2B413E654B400A963E7 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher S. Palian";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../dropbox-ios-sync-sdk-1.0.4\"",
+				);
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Lock_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "Lock-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = Passwords;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A520A164-B622-49B5-98FC-A91FD76A1051";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher S. Palian (RY7W6A2499)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFDC6E9E-78ED-4227-8E64-0C26D7E217B5";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher S. Palian";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A520A164-B622-49B5-98FC-A91FD76A1051";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Lock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				7A8EC2B413E654B400A963E7 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Distribution;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Lock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				7A8EC2B313E654B400A963E7 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Distribution;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		28D3F201112F7DC200FD0661 /* Lock.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				28860B760F44E54D00985440 /* Lock.xcdatamodel */,
+			);
+			currentVersion = 28860B760F44E54D00985440 /* Lock.xcdatamodel */;
+			path = Lock.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
