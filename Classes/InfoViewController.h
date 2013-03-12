@@ -14,11 +14,11 @@
 
 }
 
-- (IBAction)didPressLink;
--(IBAction)closeView:(id)sender;
+-(IBAction)didPressLink;
 -(IBAction)sendData:(id)sender;
 -(IBAction)receiveData:(id)sender;
 
+@property (retain, nonatomic) IBOutlet UILabel *linkedUserLabel;
 @property (nonatomic, retain) IBOutlet UIButton* linkButton;
 
 @end
