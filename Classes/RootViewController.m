@@ -28,9 +28,14 @@ UIBarButtonItem *backBarButtonItem1;
 -(IBAction)infoAction
 {
     InfoViewController *viewController = [[InfoViewController alloc]initWithNibName:@"InfoViewController" bundle:nil];
-    viewController.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
+    
+    viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(closeInfoView:)];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        
+    navController.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
     // show the navigation controller modally
-    [self presentViewController:viewController animated:YES completion:nil];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 -(IBAction)editMode
@@ -55,6 +60,13 @@ UIBarButtonItem *backBarButtonItem1;
 		backBarButtonItem1.title=@"Edit Mode";
 	}
 
+}
+
+#pragma mark - Actions
+
+- (void)closeInfoView:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark Core Data

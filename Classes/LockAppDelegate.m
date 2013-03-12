@@ -57,11 +57,11 @@
 
     [self _setupDropboxAPI];
     
+    // set all navigation bar style, since you inconsistently use toolbars and navigation bars we set both
+    [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+
     [self.window setRootViewController:navigationController];
-
-    
-    //[window addSubview:[navigationController view]];
-
     [window makeKeyAndVisible];
 }
 
