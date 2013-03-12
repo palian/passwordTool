@@ -65,6 +65,19 @@
     [window makeKeyAndVisible];
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(NSString *)source annotation:(id)annotation
+{
+    DBAccount *account = [[DBAccountManager sharedManager] handleOpenURL:url];
+    if (account)
+    {
+        DBFilesystem *filesystem = [[DBFilesystem alloc] initWithAccount:account];
+        [DBFilesystem setSharedFilesystem:filesystem];
+        NSLog(@"App linked successfully!");
+        return YES;
+    }
+    
+    return YES;
+}
 
 #pragma mark -
 #pragma mark Saving
