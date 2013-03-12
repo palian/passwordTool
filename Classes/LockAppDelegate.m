@@ -79,6 +79,19 @@
     return YES;
 }
 
+
+#pragma mark - Backup/Restore to Dropbox
+
+- (void)backupDatabaseToDropbox
+{
+    NSLog(@"Backup");
+}
+
+- (void)restoreDatabaseFromDropbox
+{
+    NSLog(@"Restore");
+}
+
 #pragma mark -
 #pragma mark Saving
 

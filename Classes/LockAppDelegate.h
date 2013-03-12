@@ -30,6 +30,17 @@
 
 - (IBAction)saveAction:sender;
 
+/**
+ Creates an encrypted version of the database and saves it to Dropbox
+ */
+- (void)backupDatabaseToDropbox;
+
+/**
+ Retrieves an encrypted version of the datase from dropbox
+ */
+- (void)restoreDatabaseFromDropbox;
+
+
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
 @property (nonatomic, retain) IBOutlet RootViewController2 *rootViewController2;
 @property (nonatomic, retain) IBOutlet DoubleComponentPickerViewController *detailViewController;

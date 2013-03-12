@@ -7,6 +7,7 @@
 //
 
 #import "InfoViewController.h"
+#import "LockAppDelegate.h"
 
 @implementation InfoViewController
 
@@ -73,13 +74,17 @@
 
 -(IBAction)sendData:(id)sender
 {
+    LockAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     
+    [appDelegate backupDatabaseToDropbox];
 }
 
 
 -(IBAction)receiveData:(id)sender
 {
+    LockAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     
+    [appDelegate restoreDatabaseFromDropbox];
 }
 
 - (void)didPressLink
