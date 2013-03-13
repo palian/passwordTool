@@ -15,11 +15,16 @@
 #import <Dropbox/Dropbox.h>
 
 @implementation LockAppDelegate
+{
+    NSDate *_lastBackupDate;
+}
 
 @synthesize window;
 @synthesize navigationController;
 
 @synthesize splitViewController, detailViewController, rootViewController2;
+
+@synthesize lastBackupDate = _lastBackupDate;
 
 - (void)awakeFromNib
 {    
@@ -50,7 +55,34 @@
     {
         DBFilesystem *filesystem = [[DBFilesystem alloc] initWithAccount:account];
         [DBFilesystem setSharedFilesystem:filesystem];
+        
+        [self _startObservingBackupFile];
     }
+}
+
+- (void)_startObservingBackupFile
+{
+    DBPath *newPath = [[DBPath root] childPath:@"Encrypted.sqlite"];
+    
+    DBError *error;
+    DBFileInfo *fileInfo = [[DBFilesystem sharedFilesystem] fileInfoForPath:newPath error:&error];
+    
+    if (fileInfo)
+    {
+		 self.lastBackupDate = fileInfo.modifiedTime;
+    }
+    
+    // observe the backup file path to update the last backup timestamp
+    [[DBFilesystem sharedFilesystem] addObserver:self forPath:newPath block:^{
+        DBError *error;
+        DBFileInfo *fileInfo = [[DBFilesystem sharedFilesystem] fileInfoForPath:newPath error:&error];
+        
+        if (fileInfo)
+        {
+			  self.lastBackupDate = fileInfo.modifiedTime;
+        }
+    }];
+
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
@@ -72,6 +104,9 @@
     {
         DBFilesystem *filesystem = [[DBFilesystem alloc] initWithAccount:account];
         [DBFilesystem setSharedFilesystem:filesystem];
+        
+        [self _startObservingBackupFile];
+        
         NSLog(@"App linked successfully!");
         return YES;
     }
@@ -175,6 +210,21 @@
     
     return YES;
 }
+
+- (void)setLastBackupDate:(NSDate *)lastBackupDate
+{
+    if (_lastBackupDate != lastBackupDate)
+    {
+        [_lastBackupDate release];
+        
+        _lastBackupDate = [lastBackupDate copy];
+        
+        // send notification
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"LockAppDelegateDidUpdateBackup" object:self];
+    }
+}
+
 
 #pragma mark -
 #pragma mark Saving

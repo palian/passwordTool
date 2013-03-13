@@ -41,6 +41,12 @@
 - (void)restoreDatabaseFromDropbox;
 
 
+/**
+ Retrieves the last modification date of the backup file
+ @returns the latest known backup date or `nil` if none available
+ */
+@property (nonatomic, copy) NSDate *lastBackupDate;
+
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
 @property (nonatomic, retain) IBOutlet RootViewController2 *rootViewController2;
 @property (nonatomic, retain) IBOutlet DoubleComponentPickerViewController *detailViewController;

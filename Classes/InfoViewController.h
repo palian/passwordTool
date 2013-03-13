@@ -19,6 +19,9 @@
 -(IBAction)receiveData:(id)sender;
 
 @property (retain, nonatomic) IBOutlet UILabel *linkedUserLabel;
+@property (retain, nonatomic) IBOutlet UILabel *lastBackupDateLabel;
 @property (nonatomic, retain) IBOutlet UIButton* linkButton;
+@property (retain, nonatomic) IBOutlet UIButton *restoreButton;
+@property (retain, nonatomic) IBOutlet UIButton *backupButton;
 
 @end
