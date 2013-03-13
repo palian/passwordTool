@@ -82,18 +82,53 @@
 
 #pragma mark - Backup/Restore to Dropbox
 
+// creates a file url for a temporary file with unique name
+- (NSURL *)_temporaryFileURL
+{
+    NSString *tmpDir =  NSTemporaryDirectory();
+    
+    CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+    CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+    NSString *tmpPath = [tmpDir stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+    CFRelease(newUniqueId);
+    CFRelease(newUniqueIdString);
+    
+    return [NSURL fileURLWithPath:tmpPath];
+}
+
+
 - (void)backupDatabaseToDropbox
 {
     NSLog(@"Backup");
     
-    NSError *error1 = nil;
-    if (![[NSFileManager defaultManager] AESEncryptFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"] toFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"EncryptedTemp.sqlite"] usingPassphrase:@"ToughC00kiesDong" error:&error1])
+    NSURL *sourceURL = [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"]];
+    NSURL *destinationURL = [self _temporaryFileURL];
+    
+    NSError *error;
+    if (![self encryptDatabaseAtURL:sourceURL toURL:destinationURL error:&error])
     {
-        NSLog(@"Failed to write encrypted file. Error = %@", [[error1 userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
+        NSLog(@"unable to encrypt DB to %@, %@", [destinationURL path], [error localizedDescription]);
+        return;
     }
-    else
+    
+    DBPath *newPath = [[DBPath root] childPath:@"Encrypted.sqlite"];
+    DBError *dbError;
+    
+    // remove previous backup if it exists
+    [[DBFilesystem sharedFilesystem] deletePath:newPath error:NULL];
+    
+    DBFile *file = [[DBFilesystem sharedFilesystem] createFile:newPath error:&dbError];
+    
+    if (!file)
     {
-        NSLog(@"Store Encrypted.");
+        NSLog(@"Unable to create Dropbox file %@", [dbError localizedDescription]);
+        return;
+    }
+
+    if (![file writeContentsOfFile:[destinationURL path] shouldSteal:YES error:&dbError])
+    {
+        NSLog(@"Unable to write to Dropbox file %@", [dbError localizedDescription]);
+        return;
     }
 }
 
@@ -121,22 +156,24 @@
     }
 }
 
--(void)encryptDatabaseToURL:(NSURL *)URL
+-(BOOL)encryptDatabaseAtURL:(NSURL *)sourceURL toURL:(NSURL *)destinationURL error:(NSError **)error
 {
-    NSError *error1 = nil;
-    if (![[NSFileManager defaultManager] AESEncryptFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"] toFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Encrypted.sqlite"] usingPassphrase:@"ToughC00kiesDong" error:&error1])
+    NSAssert([sourceURL isFileURL], @"sourceURL parameter should be a file URL");
+    NSAssert([destinationURL isFileURL], @"destinationURL parameter should be a file URL");
+    
+    NSError *AESError = nil;
+    if (![[NSFileManager defaultManager] AESEncryptFile:[sourceURL path] toFile:[destinationURL path] usingPassphrase:@"ToughC00kiesDong" error:&AESError])
     {
-        NSLog(@"Failed to write encrypted file. Error = %@", [[error1 userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
-    }
-	else
-    {
-       	NSLog(@"Store Encrypted.");
+        if (error)
+        {
+            *error = AESError;
+        }
         
-        NSFileManager *fileManager1 = [NSFileManager defaultManager];
-        [fileManager1 removeItemAtPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"] error:NULL];
-        
-        NSLog(@"Original Store Deleted.");
+        NSLog(@"Failed to write encrypted file. Error = %@", [[AESError userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
+        return NO;
     }
+    
+    return YES;
 }
 
 #pragma mark -
@@ -289,7 +326,6 @@
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     return basePath;
 }
-
 
 #pragma mark -
 #pragma mark Memory management
