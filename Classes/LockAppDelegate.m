@@ -21,8 +21,8 @@
 
 @synthesize splitViewController, detailViewController, rootViewController2;
 
-- (void)awakeFromNib {    
-    
+- (void)awakeFromNib
+{    
     RootViewController *rootViewController;// = (RootViewController *)[navigationController topViewController];
     
 
@@ -53,8 +53,8 @@
     }
 }
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-
+- (void)applicationDidFinishLaunching:(UIApplication *)application
+{
     [self _setupDropboxAPI];
     
     // set all navigation bar style, since you inconsistently use toolbars and navigation bars we set both
@@ -85,11 +85,58 @@
 - (void)backupDatabaseToDropbox
 {
     NSLog(@"Backup");
+    
+    NSError *error1 = nil;
+    if (![[NSFileManager defaultManager] AESEncryptFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"] toFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"EncryptedTemp.sqlite"] usingPassphrase:@"ToughC00kiesDong" error:&error1])
+    {
+        NSLog(@"Failed to write encrypted file. Error = %@", [[error1 userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
+    }
+    else
+    {
+        NSLog(@"Store Encrypted.");
+    }
 }
 
 - (void)restoreDatabaseFromDropbox
 {
     NSLog(@"Restore");
+    
+    NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"EncryptedTemp.sqlite"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+	
+	if ([fileManager fileExistsAtPath:storePath])
+	{
+        NSError *error1 = nil;
+		if (![[NSFileManager defaultManager] AESDecryptFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"EncryptedTemp.sqlite" ] toFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"] usingPassphrase:@"ToughC00kiesDong" error:&error1])
+		{
+			NSLog(@"Failed to write encrypted file. Error = %@", [[error1 userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
+		}
+		
+		NSLog(@"Encrypted Store Decrypted.");
+	}
+	else
+	{
+		NSLog(@"EncryptedTemp does not exist.");
+    }
+}
+
+-(void)encryptDatabaseToURL:(NSURL *)URL
+{
+    NSError *error1 = nil;
+    if (![[NSFileManager defaultManager] AESEncryptFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"] toFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Encrypted.sqlite"] usingPassphrase:@"ToughC00kiesDong" error:&error1])
+    {
+        NSLog(@"Failed to write encrypted file. Error = %@", [[error1 userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
+    }
+	else
+    {
+       	NSLog(@"Store Encrypted.");
+        
+        NSFileManager *fileManager1 = [NSFileManager defaultManager];
+        [fileManager1 removeItemAtPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"] error:NULL];
+        
+        NSLog(@"Original Store Deleted.");
+    }
 }
 
 #pragma mark -
@@ -99,8 +146,8 @@
  Performs the save action for the application, which is to send the save:
  message to the application's managed object context.
  */
-- (IBAction)saveAction:(id)sender {
-	
+- (IBAction)saveAction:(id)sender
+{	
     NSError *error = nil;
     if (![[self managedObjectContext] save:&error]) {
 		// Update to handle the error appropriately.
@@ -117,8 +164,8 @@
  Returns the managed object context for the application.
  If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
  */
-- (NSManagedObjectContext *) managedObjectContext {
-	
+- (NSManagedObjectContext *) managedObjectContext
+{	
     if (managedObjectContext != nil) {
         return managedObjectContext;
     }
@@ -131,13 +178,12 @@
     return managedObjectContext;
 }
 
-
 /**
  Returns the managed object model for the application.
  If the model doesn't already exist, it is created by merging all of the models found in the application bundle.
  */
-- (NSManagedObjectModel *)managedObjectModel {
-	
+- (NSManagedObjectModel *)managedObjectModel
+{	
     if (managedObjectModel != nil) {
         return managedObjectModel;
     }
@@ -148,8 +194,8 @@
 /**
  applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
  */
-- (void)applicationWillTerminate:(UIApplication *)application {
-    
+- (void)applicationWillTerminate:(UIApplication *)application
+{    
     NSError *error = nil;
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
@@ -192,7 +238,7 @@
         return persistentStoreCoordinator;
     }
 		
-	 NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Encrypted.sqlite"];
+    NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Encrypted.sqlite"];
 	NSString *storePath1 = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"];
 
 	 NSFileManager *fileManager = [NSFileManager defaultManager];
