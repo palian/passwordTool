@@ -14,17 +14,36 @@
 #import "rijndael.h"
 #import <Dropbox/Dropbox.h>
 
+@interface LockAppDelegate () // private
+
+// make that readwrite so that we can reset the CoreData stack
+@property (nonatomic, retain) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+@end
+
+
 @implementation LockAppDelegate
 {
     NSDate *_lastBackupDate;
+    
+    NSManagedObjectModel *_managedObjectModel;
+    NSManagedObjectContext *_managedObjectContext;
+    NSPersistentStoreCoordinator *_persistentStoreCoordinator;
 }
 
-@synthesize window;
-@synthesize navigationController;
+- (void)dealloc
+{
+    [_managedObjectContext release];
+    [_managedObjectModel release];
+    [_persistentStoreCoordinator release];
+    
+	[navigationController release];
+	[window release];
+	[super dealloc];
+}
 
-@synthesize splitViewController, detailViewController, rootViewController2;
-
-@synthesize lastBackupDate = _lastBackupDate;
 
 - (void)awakeFromNib
 {    
@@ -131,12 +150,20 @@
     return [NSURL fileURLWithPath:tmpPath];
 }
 
+// reset the Core Data stack
+- (void)_resetCoreDataStack
+{
+    self.managedObjectContext = nil;
+    self.managedObjectModel = nil;
+    self.persistentStoreCoordinator = nil;
+}
+
 
 - (void)backupDatabaseToDropbox
 {
     NSLog(@"Backup");
     
-    NSURL *sourceURL = [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"]];
+    NSURL *sourceURL = [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Lock.sqlite"]];
     NSURL *destinationURL = [self _temporaryFileURL];
     
     NSError *error;
@@ -165,33 +192,61 @@
         NSLog(@"Unable to write to Dropbox file %@", [dbError localizedDescription]);
         return;
     }
+    
+    // send notification so that everybody using old context should refresh/renew it
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LockAppDelegateDidBackupDatabase" object:self userInfo:nil];
 }
 
 - (void)restoreDatabaseFromDropbox
 {
     NSLog(@"Restore");
     
-    NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"EncryptedTemp.sqlite"];
+    // release current DB
+    [self _resetCoreDataStack];
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-	
-	if ([fileManager fileExistsAtPath:storePath])
-	{
-        NSError *error1 = nil;
-		if (![[NSFileManager defaultManager] AESDecryptFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"EncryptedTemp.sqlite" ] toFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"] usingPassphrase:@"ToughC00kiesDong" error:&error1])
-		{
-			NSLog(@"Failed to write encrypted file. Error = %@", [[error1 userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
-		}
-		
-		NSLog(@"Encrypted Store Decrypted.");
-	}
-	else
-	{
-		NSLog(@"EncryptedTemp does not exist.");
+    DBPath *newPath = [[DBPath root] childPath:@"Encrypted.sqlite"];
+    DBError *dbError;
+    
+    DBFile *file = [[DBFilesystem sharedFilesystem] openFile:newPath error:&dbError];
+    
+    if (!file)
+    {
+        NSLog(@"Cannot open file on Dropbox, %@", [dbError localizedDescription]);
+        return;
     }
+    
+    NSData *data = [file readData:&dbError];
+    
+    if (!data)
+    {
+        NSLog(@"Cannot read file on Dropbox, %@", [dbError localizedDescription]);
+        return;
+    }
+    
+    NSURL *tmpFileURL = [self _temporaryFileURL];
+    
+    if (![data writeToURL:tmpFileURL atomically:YES])
+    {
+        NSLog(@"Cannot write encrypted data to tmp file");
+        return;
+    }
+    
+    NSURL *destinationURL = [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Lock.sqlite"]];
+
+    
+    NSError *error;
+    if (![self decryptDatabaseAtURL:tmpFileURL toURL:destinationURL error:&error])
+    {
+        NSLog(@"unable to decrypt DB to %@, %@", [destinationURL path], [error localizedDescription]);
+        return;
+    }
+    
+    // send notification so that everybody using old context should refresh/renew it
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LockAppDelegateDidRestoreDatabase" object:self userInfo:nil];
 }
 
--(BOOL)encryptDatabaseAtURL:(NSURL *)sourceURL toURL:(NSURL *)destinationURL error:(NSError **)error
+// encapsulated encrypting helper
+- (BOOL)encryptDatabaseAtURL:(NSURL *)sourceURL toURL:(NSURL *)destinationURL error:(NSError **)error
 {
     NSAssert([sourceURL isFileURL], @"sourceURL parameter should be a file URL");
     NSAssert([destinationURL isFileURL], @"destinationURL parameter should be a file URL");
@@ -205,6 +260,34 @@
         }
         
         NSLog(@"Failed to write encrypted file. Error = %@", [[AESError userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
+        return NO;
+    }
+    
+    return YES;
+}
+
+// encapsulated decrypting helper
+- (BOOL)decryptDatabaseAtURL:(NSURL *)sourceURL toURL:(NSURL *)destinationURL error:(NSError **)error
+{
+    NSAssert([sourceURL isFileURL], @"sourceURL parameter should be a file URL");
+    NSAssert([destinationURL isFileURL], @"destinationURL parameter should be a file URL");
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+	
+	if ([fileManager fileExistsAtPath:[sourceURL path]])
+	{
+        NSError *error1 = nil;
+		if (![[NSFileManager defaultManager] AESDecryptFile:[sourceURL path] toFile:[destinationURL path] usingPassphrase:@"ToughC00kiesDong" error:&error1])
+		{
+			NSLog(@"Failed to write encrypted file. Error = %@", [[error1 userInfo] objectForKey:AESEncryptionErrorDescriptionKey]);
+            return NO;
+		}
+		
+		NSLog(@"Encrypted Store Decrypted.");
+	}
+	else
+	{
+		NSLog(@"EncryptedTemp does not exist.");
         return NO;
     }
     
@@ -253,16 +336,16 @@
  */
 - (NSManagedObjectContext *) managedObjectContext
 {	
-    if (managedObjectContext != nil) {
-        return managedObjectContext;
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
     }
 	
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [managedObjectContext setPersistentStoreCoordinator: coordinator];
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator: coordinator];
     }
-    return managedObjectContext;
+    return _managedObjectContext;
 }
 
 /**
@@ -271,11 +354,11 @@
  */
 - (NSManagedObjectModel *)managedObjectModel
 {	
-    if (managedObjectModel != nil) {
-        return managedObjectModel;
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
     }
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
-    return managedObjectModel;
+    _managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];
+    return _managedObjectModel;
 }
 
 /**
@@ -284,8 +367,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {    
     NSError *error = nil;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+    if (_managedObjectContext != nil) {
+        if ([_managedObjectContext hasChanges] && ![_managedObjectContext save:&error]) {
 			/*
 			 Replace this implementation with code to handle the error appropriately.
 			 
@@ -321,8 +404,8 @@
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator 
 {
 	
-    if (persistentStoreCoordinator != nil) {
-        return persistentStoreCoordinator;
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
     }
 		
     NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Encrypted.sqlite"];
@@ -354,13 +437,13 @@
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Lock.sqlite"]];
 	
 	NSError *error = nil;
-    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		abort();
     }    
 	
-    return persistentStoreCoordinator;
+    return _persistentStoreCoordinator;
 }
 
 
@@ -377,19 +460,18 @@
     return basePath;
 }
 
-#pragma mark -
-#pragma mark Memory management
+#pragma mark - Properties
 
-- (void)dealloc {
-	
-    [managedObjectContext release];
-    [managedObjectModel release];
-    [persistentStoreCoordinator release];
-    
-	[navigationController release];
-	[window release];
-	[super dealloc];
-}
+@synthesize window;
+@synthesize navigationController;
+
+@synthesize splitViewController, detailViewController, rootViewController2;
+
+@synthesize lastBackupDate = _lastBackupDate;
+
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 
 @end

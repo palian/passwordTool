@@ -11,12 +11,8 @@
 @class RootViewController2;
 @class DoubleComponentPickerViewController;
 
-@interface LockAppDelegate : NSObject <UIApplicationDelegate> {
-    
-    NSManagedObjectModel *managedObjectModel;
-    NSManagedObjectContext *managedObjectContext;	    
-    NSPersistentStoreCoordinator *persistentStoreCoordinator;
-	
+@interface LockAppDelegate : NSObject <UIApplicationDelegate>
+{
 	UISplitViewController *splitViewController;
 	
 	RootViewController2 *rootViewController2;
