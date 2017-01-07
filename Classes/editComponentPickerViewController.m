@@ -7,7 +7,7 @@
 #import "iPhonePINView.h"
 
 @interface editComponentPickerViewController ()
-@property (nonatomic, retain) UIPopoverController *popoverController;
+@property (nonatomic, strong) UIPopoverController *popoverController;
 - (void)configureView;
 @end
 
@@ -22,7 +22,7 @@
 
 @synthesize toolbar, popoverController, rootViewController;
 
-NSError *error;
+NSError *__autoreleasing *error;
 
 NSUserDefaults *defaults;
 
@@ -66,7 +66,6 @@ NSUserDefaults *defaults;
     NSMutableArray *items = [[toolbar items] mutableCopy];
     [items insertObject:barButtonItem atIndex:0];
     [toolbar setItems:items animated:YES];
-    [items release];
     self.popoverController = pc;
 }
 
@@ -77,7 +76,6 @@ NSUserDefaults *defaults;
     NSMutableArray *items = [[toolbar items] mutableCopy];
     [items removeObjectAtIndex:0];
     [toolbar setItems:items animated:YES];
-    [items release];
     self.popoverController = nil;
 }
 
@@ -103,7 +101,6 @@ NSUserDefaults *defaults;
 	{
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"Please enter a website, username and password." delegate:nil cancelButtonTitle:@"Understood" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 	else
 	{
@@ -124,7 +121,7 @@ NSUserDefaults *defaults;
 		   ||[FLetterString isEqualToString:@"9"]){FLetterString = @"#";}		
 		[editedObject setValue:FLetterString forKey:@"FLetter"];
 		
-		[context save:&error];
+		[context save:error];
 		
 		//[myManagedObject setValue:highisONConverter forKey:@"priorityLevel"];
 		[self clear];
@@ -157,7 +154,6 @@ NSUserDefaults *defaults;
 		// The device is an iPhone or iPod touch running 4.2 or later.
 		UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(clear)];          
 		self.navigationItem.rightBarButtonItem = anotherButton;
-		[anotherButton release];
 		
 		self.title = @"Edit Data";
 		
@@ -202,22 +198,6 @@ NSUserDefaults *defaults;
 	
 	[self removeKeyBoard];
 
-}
-
-- (void)dealloc {
-	[locationField release];
-
-	[breadField release];
-	[fillingField release];
-	[condomentField release];
-	
-	[popoverController release];
-    [toolbar release];
-	[rootViewController release];
-	
-	[bannerView release];
-	
-	[super dealloc];
 }
 
 @end

@@ -19,10 +19,10 @@
 	
 }
 
-@property(nonatomic, retain) UITextField *PassPhraseField;
-@property(nonatomic, retain) UILabel *infoLabel;
+@property(nonatomic, strong) UITextField *PassPhraseField;
+@property(nonatomic, strong) UILabel *infoLabel;
 
-@property(nonatomic, retain) UISegmentedControl *keyBoardController;
+@property(nonatomic, strong) UISegmentedControl *keyBoardController;
 
 -(NSString *)dataFilePath;
 

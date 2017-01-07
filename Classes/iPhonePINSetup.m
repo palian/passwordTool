@@ -13,7 +13,7 @@
 @implementation iPhonePINSetup
 @synthesize oldPassPhraseField, theNewPassPhraseField, verifyPassPhraseField;
 
-NSError *error;
+NSError *__autoreleasing *error;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -32,14 +32,13 @@ NSError *error;
 	NSManagedObjectContext *moc = [appDelegate managedObjectContext];
 	
 	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"PIN" inManagedObjectContext:moc];
-	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	[request setEntity:entityDescription];
 	
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES];
 	[request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-	[sortDescriptor release];
 	
-	NSArray *array = [moc executeFetchRequest:request error:&error];
+	NSArray *array = [moc executeFetchRequest:request error:error];
 	
 	NSString *lastPassPhrase;
 	for (int i=0; i<array.count; i++) 
@@ -62,9 +61,8 @@ NSError *error;
 			[theButton setValue:theNewPassPhraseField.text forKey:@"passPhrase"];
 			[theButton setValue:buttonDateNow forKey:@"timeStamp"];
 					
-			[context save:&error];
+			[context save:error];
 				
-			[buttonDateNow release];
 			
             [self dismissViewControllerAnimated:YES completion:nil];
 		}
@@ -72,7 +70,6 @@ NSError *error;
 		{
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"The verification field does not match the new PassPhrase field!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert show];
-			[alert release];
 		}
 	}
 	else if([oldPassPhraseField.text isEqualToString:lastPassPhrase]||[oldPassPhraseField.text isEqualToString:@"PALIANTechUniversalPasswords"])
@@ -88,9 +85,8 @@ NSError *error;
 			[theButton setValue:theNewPassPhraseField.text forKey:@"passPhrase"];
 			[theButton setValue:buttonDateNow forKey:@"timeStamp"];
 			
-			[context save:&error];
+			[context save:error];
 			
-			[buttonDateNow release];
 			
             [self dismissViewControllerAnimated:YES completion:nil];
 		}
@@ -98,14 +94,12 @@ NSError *error;
 		{
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"The verification field does not match the new PassPhrase field!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert show];
-			[alert release];
 		}
 	}
 	else
 	{
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You entered an incorrect old PassPhrase!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 		
 }
@@ -130,14 +124,13 @@ NSError *error;
 	NSManagedObjectContext *moc = [appDelegate managedObjectContext];
 	
 	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"PIN" inManagedObjectContext:moc];
-	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	[request setEntity:entityDescription];
 	
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES];
 	[request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-	[sortDescriptor release];
 	
-	NSArray *array = [moc executeFetchRequest:request error:&error];
+	NSArray *array = [moc executeFetchRequest:request error:error];
 	
 	NSString *lastPassPhrase;
 	
@@ -177,11 +170,6 @@ NSError *error;
 }
 
 
-- (void)dealloc {
-	[oldPassPhraseField release];[theNewPassPhraseField release];[verifyPassPhraseField release];
-	
-    [super dealloc];
-}
 
 
 @end

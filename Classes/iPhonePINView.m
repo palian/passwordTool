@@ -14,7 +14,7 @@
 @implementation iPhonePINView
 @synthesize PassPhraseField,infoLabel, keyBoardController;
 
-NSError *error;
+NSError *__autoreleasing *error;
 
 -(NSString *)dataFilePath
 {
@@ -44,8 +44,6 @@ NSError *error;
 	[array addObject:KeyboardType]; //stores Keyboard Type
 	
 	[array writeToFile:[self dataFilePath] atomically:YES];
-	[array release];
-	[KeyboardType release];
 }
 
 -(IBAction)VisitWebSite
@@ -81,14 +79,13 @@ NSError *error;
 	NSManagedObjectContext *moc = [appDelegate managedObjectContext];
 	
 	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"PIN" inManagedObjectContext:moc];
-	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	[request setEntity:entityDescription];
 	
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES];
 	[request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-	[sortDescriptor release];
 	
-	NSArray *array = [moc executeFetchRequest:request error:&error];
+	NSArray *array = [moc executeFetchRequest:request error:error];
 	
 	NSString *lastPassPhrase;
 	for (int i=0; i<array.count; i++) {		
@@ -101,7 +98,6 @@ NSError *error;
 	{
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SETUP NEEDED" message:@"Please enter the setup and setup a PassPhrase." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}		
 	else if([PassPhraseField.text isEqualToString:lastPassPhrase])
 	{
@@ -111,7 +107,6 @@ NSError *error;
 	{
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"INCORRECT" message:@"The PassPhrase you entered is incorrect. Please Try Again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 	
 	[PassPhraseField resignFirstResponder];
@@ -144,7 +139,6 @@ NSError *error;
 		else if([KeyBoardType isEqualToString:@"2"]){keyBoardController.selectedSegmentIndex=2;}
 		else{keyBoardController.selectedSegmentIndex=0;}
 		
-		[array release];
 	}	
 	
 	[PassPhraseField becomeFirstResponder];
@@ -173,13 +167,6 @@ NSError *error;
 }
 
 
-- (void)dealloc {
-	[PassPhraseField release];
-	[infoLabel release];
-	[keyBoardController release];
-	
-    [super dealloc];
-}
 
 
 @end

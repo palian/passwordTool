@@ -13,7 +13,7 @@
 
 	
 }
-@property (retain) NSString *passPhrase;
-@property (retain) NSDate *timeStamp;
+@property (strong) NSString *passPhrase;
+@property (strong) NSDate *timeStamp;
 
 @end

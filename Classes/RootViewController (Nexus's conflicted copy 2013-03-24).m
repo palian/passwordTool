@@ -96,7 +96,7 @@ UIBarButtonItem *backBarButtonItem1;
 	NSError *error;
 	self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"FLetter" cacheName:@"Root"];
     self.fetchedResultsController.delegate = self;
-	[self fetchedResultsController];
+	self.fetchedResultsController;
 	if (![[self fetchedResultsController] performFetch:&error])	NSLog(@"Error: %@", [error localizedDescription]);
 	
     

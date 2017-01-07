@@ -43,18 +43,18 @@
  */
 @property (nonatomic, copy) NSDate *lastBackupDate;
 
-@property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
-@property (nonatomic, retain) IBOutlet RootViewController2 *rootViewController2;
-@property (nonatomic, retain) IBOutlet DoubleComponentPickerViewController *detailViewController;
+@property (nonatomic, strong) IBOutlet UISplitViewController *splitViewController;
+@property (nonatomic, strong) IBOutlet RootViewController2 *rootViewController2;
+@property (nonatomic, strong) IBOutlet DoubleComponentPickerViewController *detailViewController;
 
-@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
-@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (nonatomic, readonly) NSString *applicationDocumentsDirectory;
+@property (weak, nonatomic, readonly) NSString *applicationDocumentsDirectory;
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
 
 @end
 

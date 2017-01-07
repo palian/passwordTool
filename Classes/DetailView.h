@@ -15,8 +15,8 @@
 	NSManagedObject *editedObject;
 }
 
-@property (nonatomic, retain) UILabel *LabelOne, *LabelTwo, *LabelThree;
-@property (nonatomic, retain) NSManagedObject *editedObject;
+@property (nonatomic, strong) UILabel *LabelOne, *LabelTwo, *LabelThree;
+@property (nonatomic, strong) NSManagedObject *editedObject;
 
 -(IBAction)dismissDetailView;
 

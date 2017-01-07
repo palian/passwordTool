@@ -65,14 +65,6 @@
 }
 
 
-- (void)dealloc {
-	[LabelOne release];
-	[LabelTwo release];
-	[LabelThree release];
-	[editedObject release];
-	
-    [super dealloc];
-}
 
 
 @end

@@ -12,6 +12,6 @@
 @interface Lock : NSObject {
 
 }
-@property (retain) NSString *FLetter, *lockLocation, *lockSlider1, *lockSlider2, *lockSlider3;
+@property (strong) NSString *FLetter, *lockLocation, *lockSlider1, *lockSlider2, *lockSlider3;
 
 @end

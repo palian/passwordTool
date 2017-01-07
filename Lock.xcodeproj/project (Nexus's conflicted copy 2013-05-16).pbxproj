@@ -54,12 +54,12 @@
 		7AF608C013E4482B00BCEF37 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608AC13E4482B00BCEF37 /* Icon@2x.png */; };
 		7AF608C913E4482B00BCEF37 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608B913E4482B00BCEF37 /* Default.png */; };
 		7AF608CA13E4482B00BCEF37 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF608BA13E4482B00BCEF37 /* Default@2x.png */; };
-		A513FC721713C1D800BBB8C0 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513FC711713C1D800BBB8C0 /* Dropbox.framework */; };
 		A55151CB1669C80200A0E79C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A55151CA1669C80200A0E79C /* Default-568h@2x.png */; };
 		A5AF6CB616C2148F00404075 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AF6CB416C2148F00404075 /* InfoViewController.m */; };
 		A5AF6CB716C2148F00404075 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AF6CB516C2148F00404075 /* InfoViewController.xib */; };
 		A5B44C9516C3608A0092CAD9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B44C9416C3608A0092CAD9 /* Security.framework */; };
 		A5B44C9816C360940092CAD9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B44C9716C360940092CAD9 /* QuartzCore.framework */; };
+		A5CB79FB16F2C5EB0068F5D2 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CB79FA16F2C5EB0068F5D2 /* Dropbox.framework */; };
 		A780942A16EF7087000B8EDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A780942916EF7087000B8EDA /* CFNetwork.framework */; };
 		A780942C16EF7096000B8EDA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A780942B16EF7096000B8EDA /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
@@ -127,13 +127,13 @@
 		7AF608B913E4482B00BCEF37 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		7AF608BA13E4482B00BCEF37 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Lock-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Lock-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		A513FC711713C1D800BBB8C0 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = "../dropbox-ios-sync-sdk-1.0.4/Dropbox.framework"; sourceTree = "<group>"; };
 		A55151CA1669C80200A0E79C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A5AF6CB316C2148F00404075 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		A5AF6CB416C2148F00404075 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		A5AF6CB516C2148F00404075 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		A5B44C9416C3608A0092CAD9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A5B44C9716C360940092CAD9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A5CB79FA16F2C5EB0068F5D2 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = "../../../../Universal Password app/dropbox-ios-sync-sdk-1.0.4/Dropbox.framework"; sourceTree = "<group>"; };
 		A780942916EF7087000B8EDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A780942B16EF7096000B8EDA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -143,7 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A513FC721713C1D800BBB8C0 /* Dropbox.framework in Frameworks */,
+				A5CB79FB16F2C5EB0068F5D2 /* Dropbox.framework in Frameworks */,
 				A780942C16EF7096000B8EDA /* SystemConfiguration.framework in Frameworks */,
 				A780942A16EF7087000B8EDA /* CFNetwork.framework in Frameworks */,
 				A5B44C9816C360940092CAD9 /* QuartzCore.framework in Frameworks */,
@@ -228,7 +228,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A513FC711713C1D800BBB8C0 /* Dropbox.framework */,
+				A5CB79FA16F2C5EB0068F5D2 /* Dropbox.framework */,
 				A780942B16EF7096000B8EDA /* SystemConfiguration.framework */,
 				A780942916EF7087000B8EDA /* CFNetwork.framework */,
 				A5B44C9716C360940092CAD9 /* QuartzCore.framework */,
@@ -468,6 +468,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../dropbox-ios-sync-sdk-1.0.4\"",
+					"\"$(SRCROOT)/../../../../Universal Password app/dropbox-ios-sync-sdk-1.0.4\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INPUT_FILETYPE = automatic;
@@ -478,7 +479,7 @@
 				INFOPLIST_FILE = "Lock-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Passwords;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6748F285-B05B-4DD5-BEA1-3CA0ECF85938";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFDC6E9E-78ED-4227-8E64-0C26D7E217B5";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -494,6 +495,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../dropbox-ios-sync-sdk-1.0.4\"",
+					"\"$(SRCROOT)/../../../../Universal Password app/dropbox-ios-sync-sdk-1.0.4\"",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -538,6 +540,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../dropbox-ios-sync-sdk-1.0.4\"",
+					"\"$(SRCROOT)/../../../../Universal Password app/dropbox-ios-sync-sdk-1.0.4\"",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

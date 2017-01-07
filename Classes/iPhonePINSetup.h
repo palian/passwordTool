@@ -15,7 +15,7 @@
 	
 }
 
-@property(nonatomic, retain)UITextField *oldPassPhraseField, *theNewPassPhraseField, *verifyPassPhraseField;
+@property(nonatomic, strong)UITextField *oldPassPhraseField, *theNewPassPhraseField, *verifyPassPhraseField;
 
 -(IBAction)removePassPhraseKey;
 -(IBAction)setPassPhrase1;

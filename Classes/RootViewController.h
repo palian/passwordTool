@@ -19,13 +19,13 @@
 
 }
 
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet ADBannerView *bannerView;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet ADBannerView *bannerView;
 
-@property (retain) UISearchBar *searchBar;
-@property (retain) UISearchDisplayController *searchDC;
+@property (strong) UISearchBar *searchBar;
+@property (strong) UISearchDisplayController *searchDC;
 
 
 -(void)moveBannerViewOffscreen;

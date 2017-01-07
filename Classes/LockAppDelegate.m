@@ -17,9 +17,9 @@
 @interface LockAppDelegate () // private
 
 // make that readwrite so that we can reset the CoreData stack
-@property (nonatomic, retain) NSManagedObjectModel *managedObjectModel;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @end
 
@@ -33,16 +33,6 @@
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
 }
 
-- (void)dealloc
-{
-    [_managedObjectContext release];
-    [_managedObjectModel release];
-    [_persistentStoreCoordinator release];
-    
-	[navigationController release];
-	[window release];
-	[super dealloc];
-}
 
 
 - (void)awakeFromNib
@@ -143,7 +133,7 @@
     
     CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
     CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
-    NSString *tmpPath = [tmpDir stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+    NSString *tmpPath = [tmpDir stringByAppendingPathComponent:(    NSString *)CFBridgingRelease(newUniqueIdString)];
     CFRelease(newUniqueId);
     CFRelease(newUniqueIdString);
     
@@ -298,7 +288,6 @@
 {
     if (_lastBackupDate != lastBackupDate)
     {
-        [_lastBackupDate release];
         
         _lastBackupDate = [lastBackupDate copy];
         
@@ -357,7 +346,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    _managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
     return _managedObjectModel;
 }
 

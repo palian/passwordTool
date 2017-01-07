@@ -34,11 +34,6 @@
     
     [[DBAccountManager sharedManager] removeObserver:self];
     
-    [_linkedUserLabel release];
-    [_restoreButton release];
-    [_lastBackupDateLabel release];
-    [_backupButton release];
-    [super dealloc];
 }
 
 - (void)updateStatus

@@ -16,7 +16,7 @@
 	UIPopoverController *popoverController;
     UIToolbar *toolbar;
 	
-    RootViewController2 *rootViewController;
+    RootViewController2 *__weak rootViewController;
 	
 	IBOutlet	UITextField		*locationField;
 
@@ -26,16 +26,16 @@
 	
 }
 
-@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
-@property (nonatomic, assign) IBOutlet RootViewController2 *rootViewController;
+@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, weak) IBOutlet RootViewController2 *rootViewController;
 
-@property (retain, nonatomic) UITextField	*locationField;
+@property (strong, nonatomic) UITextField	*locationField;
 
-@property (retain, nonatomic) UITextField	*breadField;
-@property (retain, nonatomic) UITextField	*fillingField;
-@property (retain, nonatomic) UITextField	*condomentField;
+@property (strong, nonatomic) UITextField	*breadField;
+@property (strong, nonatomic) UITextField	*fillingField;
+@property (strong, nonatomic) UITextField	*condomentField;
 
-@property (nonatomic, retain) IBOutlet ADBannerView *bannerView;
+@property (nonatomic, strong) IBOutlet ADBannerView *bannerView;
 
 -(void)moveBannerViewOffscreen;
 -(void)moveBannerViewOnscreen;
